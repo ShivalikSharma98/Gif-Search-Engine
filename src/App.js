@@ -20,22 +20,22 @@ function App() {
 		getImages();
 	}, []);
 
-  const [searchString, setSearchString] = useState('minions');
+	const [searchString, setSearchString] = useState('yoda');
 
-  function handleChange(event) {
-	  setSearchString(event.target.value);
-  }
+	function handleChange(event) {
+		setSearchString(event.target.value);
+	}
 
-  function handleSubmit(event) {
-	  event.preventDefault();
-	  getImages(searchString);
-  }
+	function handleSubmit(event) {
+		event.preventDefault();
+		getImages(searchString);
+	}
 
-  const [lastSearch, setLastSearch] = useState('');
+	const [lastSearch, setLastSearch] = useState('');
 
-  useEffect(() => {
-	  getImages(searchString)
-  }, []);
+	useEffect(() => {
+		getImages(searchString);
+	}, []);
 
 	function getImages(searchString) {
 		const url = `${searchOptions.api}${searchOptions.endpoint}?api_key=${searchOptions.key}&q=${searchString} &limit=${searchOptions.limit}&offset=${searchOptions.offset}&rating=${searchOptions.rating}&lang=en`;
@@ -52,8 +52,12 @@ function App() {
 
 	return (
 		<div className='App'>
-			<SearchHeader lastSearch={lastSearch}/>
-			<SearchForm handleChange={handleChange} handleSubmit={handleSubmit} searchString={searchString} />
+			<SearchHeader lastSearch={lastSearch} />
+			<SearchForm
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+				searchString={searchString}
+			/>
 			<SearchResults images={images} />
 		</div>
 	);
