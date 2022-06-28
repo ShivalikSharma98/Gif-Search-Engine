@@ -1,0 +1,31 @@
+/* Add a muted to the existing color variables in :root  */
+:root {
+	/* ... */
+	--muted: #a1a1a1;
+}
+
+header {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 1rem 0;
+}
+
+h1,
+p {
+	margin: 0;
+}
+
+.muted {
+	color: var(--muted);
+}
+
+/* Add a header declaration to the existing 
+media query for screen sizes of 1000px or more  */
+@media (min-width: 1000px) {
+	header {
+		align-items: center;
+		flex-direction: row;
+	}
+	/* ...  */
+}
